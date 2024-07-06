@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   const [formData, setFormData] = useState({ username: '', password: '' });
   const [error, setError] = useState(null);
-
+  const navigate = useNavigate(); 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -29,7 +29,7 @@ function Register() {
         throw new Error(`Error ${res.status}: ${errorText}`);
       }
       if(res.ok){
-        Navigate('/login')
+        navigate('/login')
       }
 
       const data = await res.json();

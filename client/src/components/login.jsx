@@ -4,7 +4,7 @@ import { useState } from "react"
 
 function Login() {
   const [formData , setFormData ] = useState({})
-  const [error , setError] = useState({})
+  const [error , setError] = useState()
   const handleChange = (e)=>{
     const {name , value} = e.target
     setFormData({...formData , [name]:value})
@@ -12,8 +12,8 @@ function Login() {
   }
   const handleSubmit = async(e)=>{
     e.preventDefault()
-    if(formData.email === "" || formData.password === ""){
-      setError({email:"Email is required",password:"Password is required"})
+    if(formData.username === "" || formData.password === ""){
+      setError({username:"username is required",password:"Password is required"})
     }
     else{
       setError({})
@@ -45,9 +45,9 @@ function Login() {
         <h2 className="text-2xl font-bold mb-5">Login</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-gray-700">Email</label>
+            <label className="block text-gray-700">username</label>
             <input
-              type="email"
+              type="text"
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
               onChange={handleChange}
               required
